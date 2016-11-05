@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package parcialava;
+package directorio;
 
 import abb.ABB;
 import abb.NodoBinario;
@@ -23,6 +23,7 @@ public class ParcialAVA {
         // TODO code application logic here
         
         DirectorioContactos directorio = new DirectorioContactos();
+        directorio.add(new Contacto("Matias", "77", "88", "99"));
         directorio.add(new Contacto("Juan", "11", "22", "33"));
         directorio.add(new Contacto("Ricardo", "44", "55", "66"));
         directorio.add(new Contacto("Carlos", "77", "88", "99"));
@@ -32,10 +33,10 @@ public class ParcialAVA {
         Contacto buscarContacto = directorio.BuscarContactoCorreo("33@gail.com");
         //directorio.print();
         
-                System.out.println(buscar);
+        //  System.out.println(buscar);
 
-        //Preorder
-        //System.out.println(directorio.getRaiz().toStringPostOrder());
+        //Mostrar Contactos en Orden Alfabetico
+        directorio.ContactosOrdenAlfabetico();
     }
 
 }

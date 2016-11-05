@@ -46,9 +46,8 @@ public class DirectorioContactos extends abb.ABB {
         return nodoEncontrado;
     }
     
-    
     public Contacto BuscarContactoCorreo(String correo) {
-    return BuscarContactoCorreo(correo, super.getRaiz());
+        return BuscarContactoCorreo(correo, super.getRaiz());
     }
     
     private Contacto BuscarContactoCorreo(String correo, NodoBinario<Contacto> nodoRaiz) {
@@ -67,5 +66,21 @@ public class DirectorioContactos extends abb.ABB {
             if(buscarDerecha != null) return buscarDerecha;
         }
         return null;
+    }
+    
+    public void ContactosOrdenAlfabetico(){
+        ContactosOrdenAlfabetico(super.getRaiz());
+    }
+    
+    private void ContactosOrdenAlfabetico(NodoBinario<Contacto> nodoRaiz) {
+
+        if (nodoRaiz.getHijoIzquierdo() != null) {
+            ContactosOrdenAlfabetico(nodoRaiz.getHijoIzquierdo());
+        }
+        System.out.println(nodoRaiz.getItem().getNombre());
+        
+        if (nodoRaiz.getHijoDerecho()!= null) {
+            ContactosOrdenAlfabetico(nodoRaiz.getHijoDerecho());
+        }
     }
 }

@@ -70,8 +70,23 @@ public class NodoBinario<E> {
         if (hijoDerecho != null) {
             cadena += " " + hijoDerecho.toStringPostOrder();
         }
-        
         cadena += " " + item;
+        
+
+        return cadena;
+    }
+    
+    public String toStringInOrder() {
+        String cadena = "";
+
+        if (hijoIzquierdo != null) {
+            cadena += " " + hijoIzquierdo.toStringPostOrder();
+        }
+        cadena += " " + item;
+        if (hijoDerecho != null) {
+            cadena += " " + hijoDerecho.toStringPostOrder();
+        }
+        
 
         return cadena;
     }
