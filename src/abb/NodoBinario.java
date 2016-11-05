@@ -86,7 +86,6 @@ public class NodoBinario<E> {
         if (hijoDerecho != null) {
             cadena += " " + hijoDerecho.toStringPostOrder();
         }
-        
 
         return cadena;
     }

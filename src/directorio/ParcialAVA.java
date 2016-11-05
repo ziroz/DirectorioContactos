@@ -27,14 +27,17 @@ public class ParcialAVA {
         directorio.add(new Contacto("Juan", "11", "22", "33"));
         directorio.add(new Contacto("Ricardo", "44", "55", "66"));
         directorio.add(new Contacto("Carlos", "77", "88", "99"));
-        directorio.add(new Contacto("Andres", "11", "22", "33@gmail.com"));
+        directorio.add(new Contacto("Luis", "77", "88", "99"));
+        directorio.add(new Contacto("Sebastian", "77", "88", "99"));
+        directorio.add(new Contacto("Pedro", "77", "88", "99"));
+        //directorio.add(new Contacto("Andres", "11", "22", "33@gmail.com"));
         
         Contacto buscar = directorio.BuscarContactoNombre("Jan");
         Contacto buscarContacto = directorio.BuscarContactoCorreo("33@gail.com");
         //directorio.print();
-        
+        directorio.imprimirNivel();
         //  System.out.println(buscar);
-
+System.out.println(directorio.CompleteABB());
         //Mostrar Contactos en Orden Alfabetico
         directorio.ContactosOrdenAlfabetico();
     }

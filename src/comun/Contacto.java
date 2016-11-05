@@ -66,6 +66,6 @@ public class Contacto implements Comparable<Contacto> {
 
     @Override
     public String toString() {
-        return "Nombre: " + nombre + ", Teléfono: " + telefono + ", DireccionPostal: " + direccionPostal + ", Correo Eletrónico: " + correoElectronico;
+        return nombre;//"Nombre: " + nombre + ", Teléfono: " + telefono + ", DireccionPostal: " + direccionPostal + ", Correo Eletrónico: " + correoElectronico;
     }
 }
