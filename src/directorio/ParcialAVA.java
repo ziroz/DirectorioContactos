@@ -29,11 +29,12 @@ public class ParcialAVA {
         directorio.add(new Contacto("Carlos", "77", "88", "99"));
         directorio.add(new Contacto("Luis", "77", "88", "99"));
         directorio.add(new Contacto("Sebastian", "77", "88", "99"));
-        directorio.add(new Contacto("Pedro", "77", "88", "99"));
+        directorio.add(new Contacto("Pedro", "77", "88@", "99"));
         //directorio.add(new Contacto("Andres", "11", "22", "33@gmail.com"));
         
-        Contacto buscar = directorio.BuscarContactoNombre("Jan");
+        Contacto buscar = directorio.BuscarContactoNombre("88@");
         Contacto buscarContacto = directorio.BuscarContactoCorreo("33@gail.com");
+        Contacto buscarLike = directorio.BuscarPorCadena("dro");
         //directorio.print();
         
         //Nodos Por Nivel
@@ -43,12 +44,15 @@ public class ParcialAVA {
             System.out.println("Nivel " + i + "  Cantidad = " + nodosPorNivel[i]);
         }
         //  System.out.println(buscar);
-        System.out.println(directorio.CompleteABB());
+        //System.out.println(directorio.CompleteABB());
         //Mostrar Contactos en Orden Alfabetico
-        System.out.println(directorio.ContactosOrdenAlfabetico());
+        //System.out.println(directorio.ContactosOrdenAlfabetico());
         
+        //Busqueda Like
+        System.out.println(buscarLike);
+
         //Correos Invalidos
-        System.out.println(directorio.ObtenerCorreosInvalidos());
+        //System.out.println(directorio.ObtenerCorreosInvalidos());
     }
 
 }

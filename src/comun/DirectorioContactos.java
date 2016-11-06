@@ -63,6 +63,32 @@ public class DirectorioContactos extends abb.ABB {
         return null;
     }
 
+    public Contacto BuscarPorCadena(String cadena) {
+        return BuscarPorCadena(cadena, super.getRaiz());
+    }
+
+    private Contacto BuscarPorCadena(String cadena, NodoBinario<Contacto> nodoRaiz) {
+
+        if (nodoRaiz != null) {
+            if (nodoRaiz.getItem().getNombre().toLowerCase().contains(cadena.toLowerCase())
+                || nodoRaiz.getItem().getCorreoElectronico().toLowerCase().contains(cadena.toLowerCase())
+                || nodoRaiz.getItem().getDireccionPostal().toLowerCase().contains(cadena.toLowerCase())) {
+                return nodoRaiz.getItem();
+            }
+
+            Contacto buscarIzquierda = BuscarPorCadena(cadena, nodoRaiz.getHijoIzquierdo());
+            if (buscarIzquierda != null) {
+                return buscarIzquierda;
+            }
+
+            Contacto buscarDerecha = BuscarPorCadena(cadena, nodoRaiz.getHijoDerecho());
+            if (buscarDerecha != null) {
+                return buscarDerecha;
+            }
+        }
+        return null;
+    }
+    
     public String ContactosOrdenAlfabetico() {
         return ContactosOrdenAlfabetico(super.getRaiz());
     }
