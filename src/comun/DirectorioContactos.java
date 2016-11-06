@@ -19,9 +19,9 @@ public class DirectorioContactos extends abb.ABB {
         Contacto nodoEncontrado = null;
 
         while (nodoActual != null && nodoEncontrado == null) {
-            if (nodoActual.getItem().getNombre().compareTo(nombreContacto) == 0) {
+            if (nodoActual.getItem().getNombre().compareToIgnoreCase(nombreContacto) == 0) {
                 nodoEncontrado = nodoActual.getItem();
-            } else if (nodoActual.getItem().getNombre().compareTo(nombreContacto) > 0) {
+            } else if (nodoActual.getItem().getNombre().compareToIgnoreCase(nombreContacto) > 0) {
                 if (nodoActual.getHijoIzquierdo() == null) {
                     nodoActual = null;
                 } else {
@@ -46,7 +46,7 @@ public class DirectorioContactos extends abb.ABB {
     private Contacto BuscarContactoCorreo(String correo, NodoBinario<Contacto> nodoRaiz) {
 
         if (nodoRaiz != null) {
-            if (nodoRaiz.getItem().getCorreoElectronico().compareTo(correo) == 0) {
+            if (nodoRaiz.getItem().getCorreoElectronico().compareToIgnoreCase(correo) == 0) {
                 return nodoRaiz.getItem();
             }
 
