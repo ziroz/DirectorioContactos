@@ -1,5 +1,8 @@
 package comun;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  *
  * @author Oscar Arenas
@@ -10,6 +13,8 @@ public class Contacto implements Comparable<Contacto> {
     private String telefono;
     private String direccionPostal;
     private String correoElectronico;
+    public static final Pattern VALID_EMAIL_ADDRESS_REGEX = 
+    Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
     public Contacto() {
         nombre = "";
@@ -57,6 +62,11 @@ public class Contacto implements Comparable<Contacto> {
 
     public void setDireccionPostal(String direccionPostal) {
         this.direccionPostal = direccionPostal;
+    }
+    
+    public boolean getCorreoValido(){
+        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX .matcher(correoElectronico);
+        return matcher.find();
     }
     
     @Override

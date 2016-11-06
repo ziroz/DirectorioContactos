@@ -24,7 +24,7 @@ public class ParcialAVA {
         
         DirectorioContactos directorio = new DirectorioContactos();
         directorio.add(new Contacto("Matias", "77", "88", "99"));
-        directorio.add(new Contacto("Juan", "11", "22", "33"));
+        directorio.add(new Contacto("Juan", "11", "22", "DHFGJ@fg.hj?"));
         directorio.add(new Contacto("Ricardo", "44", "55", "66"));
         directorio.add(new Contacto("Carlos", "77", "88", "99"));
         directorio.add(new Contacto("Luis", "77", "88", "99"));
@@ -37,9 +37,12 @@ public class ParcialAVA {
         //directorio.print();
         directorio.imprimirNivel();
         //  System.out.println(buscar);
-System.out.println(directorio.CompleteABB());
+        System.out.println(directorio.CompleteABB());
         //Mostrar Contactos en Orden Alfabetico
-        directorio.ContactosOrdenAlfabetico();
+        System.out.println(directorio.ContactosOrdenAlfabetico());
+        
+        //Correos Invalidos
+        System.out.println(directorio.ObtenerCorreosInvalidos());
     }
 
 }

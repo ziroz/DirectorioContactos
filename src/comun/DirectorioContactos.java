@@ -12,75 +12,78 @@ import abb.NodoBinario;
  * @author Ciro
  */
 public class DirectorioContactos extends abb.ABB {
-    
+
     public Contacto BuscarContactoNombre(String nombreContacto) {
-        
+
         NodoBinario<Contacto> nodoActual = super.getRaiz();
         Contacto nodoEncontrado = null;
-                
-        while(nodoActual != null && nodoEncontrado == null)
-        {
-            if(nodoActual.getItem().getNombre().compareTo(nombreContacto) == 0)
-            {
+
+        while (nodoActual != null && nodoEncontrado == null) {
+            if (nodoActual.getItem().getNombre().compareTo(nombreContacto) == 0) {
                 nodoEncontrado = nodoActual.getItem();
-            }
-        else
-            
-            if(nodoActual.getItem().getNombre().compareTo(nombreContacto) > 0)
-            {
-                if(nodoActual.getHijoIzquierdo() == null){
+            } else if (nodoActual.getItem().getNombre().compareTo(nombreContacto) > 0) {
+                if (nodoActual.getHijoIzquierdo() == null) {
                     nodoActual = null;
-                }else{
+                } else {
                     nodoActual = nodoActual.getHijoIzquierdo();
                 }
-            }else
-            {
-                if(nodoActual.getHijoDerecho()== null){
+            } else {
+                if (nodoActual.getHijoDerecho() == null) {
                     nodoActual = null;
-                }else{
+                } else {
                     nodoActual = nodoActual.getHijoDerecho();
                 }
             }
         }
-        
+
         return nodoEncontrado;
     }
-    
+
     public Contacto BuscarContactoCorreo(String correo) {
         return BuscarContactoCorreo(correo, super.getRaiz());
     }
-    
+
     private Contacto BuscarContactoCorreo(String correo, NodoBinario<Contacto> nodoRaiz) {
-        
-        if(nodoRaiz != null)
-        {
-            if(nodoRaiz.getItem().getCorreoElectronico().compareTo(correo) == 0)
-            {
+
+        if (nodoRaiz != null) {
+            if (nodoRaiz.getItem().getCorreoElectronico().compareTo(correo) == 0) {
                 return nodoRaiz.getItem();
             }
 
             Contacto buscarIzquierda = BuscarContactoCorreo(correo, nodoRaiz.getHijoIzquierdo());
-            if(buscarIzquierda != null) return buscarIzquierda;
+            if (buscarIzquierda != null) {
+                return buscarIzquierda;
+            }
 
             Contacto buscarDerecha = BuscarContactoCorreo(correo, nodoRaiz.getHijoDerecho());
-            if(buscarDerecha != null) return buscarDerecha;
+            if (buscarDerecha != null) {
+                return buscarDerecha;
+            }
         }
         return null;
     }
-    
-    public void ContactosOrdenAlfabetico(){
-        ContactosOrdenAlfabetico(super.getRaiz());
+
+    public String ContactosOrdenAlfabetico() {
+        return ContactosOrdenAlfabetico(super.getRaiz());
+    }
+
+    private String ContactosOrdenAlfabetico(NodoBinario<Contacto> nodoRaiz) {
+        if(nodoRaiz == null) return "";
+        
+        return ContactosOrdenAlfabetico(nodoRaiz.getHijoIzquierdo()) 
+                + " " + nodoRaiz.getItem().getNombre() 
+                + " " + ContactosOrdenAlfabetico(nodoRaiz.getHijoDerecho());
     }
     
-    private void ContactosOrdenAlfabetico(NodoBinario<Contacto> nodoRaiz) {
+    public String ObtenerCorreosInvalidos() {
+        return ObtenerCorreosInvalidos(super.getRaiz());
+    }
 
-        if (nodoRaiz.getHijoIzquierdo() != null) {
-            ContactosOrdenAlfabetico(nodoRaiz.getHijoIzquierdo());
-        }
-        System.out.println(nodoRaiz.getItem().getNombre());
+    private String ObtenerCorreosInvalidos(NodoBinario<Contacto> nodoRaiz) {
+        if(nodoRaiz == null) return "";
         
-        if (nodoRaiz.getHijoDerecho()!= null) {
-            ContactosOrdenAlfabetico(nodoRaiz.getHijoDerecho());
-        }
+        return (!nodoRaiz.getItem().getCorreoValido() ? nodoRaiz.getItem().getCorreoElectronico() : "")
+                + " " + ObtenerCorreosInvalidos(nodoRaiz.getHijoIzquierdo()) 
+                + " " + ObtenerCorreosInvalidos(nodoRaiz.getHijoDerecho());
     }
 }
