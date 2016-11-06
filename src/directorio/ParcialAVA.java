@@ -46,13 +46,13 @@ public class ParcialAVA {
         //  System.out.println(buscar);
         //System.out.println(directorio.CompleteABB());
         //Mostrar Contactos en Orden Alfabetico
-        //System.out.println(directorio.ContactosOrdenAlfabetico());
+        System.out.println(directorio.ContactosOrdenAlfabetico());
         
         //Busqueda Like
         System.out.println(buscarLike);
 
         //Correos Invalidos
-        //System.out.println(directorio.ObtenerCorreosInvalidos());
+        System.out.println(directorio.ObtenerCorreosInvalidos());
     }
 
 }

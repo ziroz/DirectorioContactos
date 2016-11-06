@@ -98,7 +98,7 @@ public class DirectorioContactos extends abb.ABB {
         
         return ContactosOrdenAlfabetico(nodoRaiz.getHijoIzquierdo()) 
                 + " " + nodoRaiz.getItem().getNombre() 
-                + " " + ContactosOrdenAlfabetico(nodoRaiz.getHijoDerecho());
+                + ", " + ContactosOrdenAlfabetico(nodoRaiz.getHijoDerecho());
     }
     
     public String ObtenerCorreosInvalidos() {
@@ -108,8 +108,8 @@ public class DirectorioContactos extends abb.ABB {
     private String ObtenerCorreosInvalidos(NodoBinario<Contacto> nodoRaiz) {
         if(nodoRaiz == null) return "";
         
-        return (!nodoRaiz.getItem().getCorreoValido() ? nodoRaiz.getItem().getCorreoElectronico() : "")
-                + " " + ObtenerCorreosInvalidos(nodoRaiz.getHijoIzquierdo()) 
-                + " " + ObtenerCorreosInvalidos(nodoRaiz.getHijoDerecho());
+        return (!nodoRaiz.getItem().getCorreoValido() ? nodoRaiz.getItem().getNombre() + " (" + nodoRaiz.getItem().getCorreoElectronico() + "), " : "")
+                + ObtenerCorreosInvalidos(nodoRaiz.getHijoIzquierdo()) 
+                + ObtenerCorreosInvalidos(nodoRaiz.getHijoDerecho());
     }
 }
