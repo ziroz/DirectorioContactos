@@ -52,36 +52,60 @@ public class ABB<E extends Comparable<E>> {
         }
     }
 
-    public boolean deleteSubArbol(E clave) {
+    public NodoBinario<E> padre(E item) {
+        NodoBinario<E> auxiliar = raiz;
+        NodoBinario<E> padre = null;
 
-        if (raiz == null) {
-            raiz = null;
-            return true;
-        }
-
-        boolean nodoEliminado = false;
-
-        NodoBinario<E> nodoActual = raiz;
-
-        while (!nodoEliminado && nodoActual != null) {
-            if (nodoActual.getItem().compareTo(clave) > 0) {
-                if (nodoActual.getHijoIzquierdo().getItem().compareTo(clave) == 0) {
-                    nodoActual.setHijoIzquierdo(null);
-                    nodoEliminado = true;
+        while (auxiliar != null) {
+            int comparar = item.compareTo(auxiliar.getItem());
+            if (comparar == 0) {
+                if (padre != null) {
+                    return padre;
                 } else {
-                    nodoActual = nodoActual.getHijoIzquierdo();
+                    return null;
                 }
-            } else if (nodoActual.getItem().compareTo(clave) < 0) {
-                if (nodoActual.getHijoDerecho().getItem().compareTo(clave) == 0) {
-                    nodoActual.setHijoDerecho(null);
-                    nodoEliminado = true;
-                } else {
-                    nodoActual = nodoActual.getHijoDerecho();
-                }
+            } else if (comparar > 0) {
+                padre = auxiliar;
+                auxiliar = auxiliar.getHijoDerecho();
+            } else {
+                padre = auxiliar;
+                auxiliar = auxiliar.getHijoIzquierdo();
             }
         }
 
-        return nodoEliminado;
+        return null;
+    }
+    
+    public boolean deleteNodo(NodoBinario<E> nodo) {
+
+        /* Creamos variables para saber si tiene hijos izquierdo y derecho */
+        boolean tieneNodoDerecha = nodo.getHijoDerecho()!= null;
+        boolean tieneNodoIzquierda = nodo.getHijoIzquierdo()!= null;
+        
+        NodoBinario<E> nodoPadre = padre(nodo.getItem());
+        
+        /* Verificamos los 3 casos diferentes y llamamos a la función correspondiente */
+
+        /* Caso 1: No tiene hijos */
+        if (!tieneNodoDerecha && !tieneNodoIzquierda) {
+            if(nodoPadre.getHijoDerecho() == nodo) {
+                nodoPadre.setHijoDerecho(null);
+                return true;
+            }
+            
+            if(nodoPadre.getHijoIzquierdo()== nodo) {
+                nodoPadre.setHijoIzquierdo(null);
+                return true;
+            }
+        }
+
+        /* Caso 2: Tiene un hijo y el otro no */
+        // falta por implementar
+
+        /* Caso 3: Tiene ambos hijos */
+        // falta por implementar
+
+        return false;
     }
 
     public void print() {
