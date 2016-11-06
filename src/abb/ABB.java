@@ -160,25 +160,19 @@ public class ABB<E extends Comparable<E>> {
         CompleteABB(nodoRaiz.getHijoIzquierdo(), nivelActual+1, niveles);
     }
     
-    String[] niveles;
-public void imprimirNivel() {
-        niveles = new String[AlturaArbol() + 1];
-
-        imprimirNivel(raiz, 0);
-        for (int i = 0; i < niveles.length; i++) {
-            System.out.println(niveles[i] + " En nivel: " + i);
-        }
+    public int[] cantidadNodosPorNivel() {
+        int[] niveles = new int[AlturaArbol()];
+        cantidadNodosPorNivel(raiz, 0, niveles);
+        return niveles;
     }
 
-    public void imprimirNivel(NodoBinario<E> pivote, int nivel2) {
+    public void cantidadNodosPorNivel(NodoBinario<E> pivote, int nivelActual, int[] niveles) {
         if (pivote != null) {
-            niveles[nivel2] = pivote.getItem()+ ", " + ((niveles[nivel2] != null) ? niveles[nivel2] : "");
-            imprimirNivel(pivote.getHijoDerecho(), nivel2 + 1);
-            imprimirNivel(pivote.getHijoIzquierdo(), nivel2 + 1);
+            niveles[nivelActual]++;
+            cantidadNodosPorNivel(pivote.getHijoDerecho(), nivelActual + 1, niveles);
+            cantidadNodosPorNivel(pivote.getHijoIzquierdo(), nivelActual + 1, niveles);
         }
     }
-
-    
     
     public E elementoMayor() {
 

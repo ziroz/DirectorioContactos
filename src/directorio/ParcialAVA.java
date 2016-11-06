@@ -35,7 +35,13 @@ public class ParcialAVA {
         Contacto buscar = directorio.BuscarContactoNombre("Jan");
         Contacto buscarContacto = directorio.BuscarContactoCorreo("33@gail.com");
         //directorio.print();
-        directorio.imprimirNivel();
+        
+        //Nodos Por Nivel
+        int[] nodosPorNivel = directorio.cantidadNodosPorNivel();
+        
+        for (int i = 0; i < nodosPorNivel.length; i++) {
+            System.out.println("Nivel " + i + "  Cantidad = " + nodosPorNivel[i]);
+        }
         //  System.out.println(buscar);
         System.out.println(directorio.CompleteABB());
         //Mostrar Contactos en Orden Alfabetico
